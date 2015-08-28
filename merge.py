@@ -32,14 +32,15 @@ def merge_sort_not_recursion(input_array, reverse=False):
     input_copy = input_array.copy()
     input_length = len(input_copy)
     operator = lt if reverse else gt
+    merge_length = 1
 
     # optimization for merge_length 1
     # for start in range(0, input_length, 2):
     #     end = start + 1
-    #     if end < input_length and operator(input_copy[start], input_copy[end]):
-    #         input_copy[start], input_copy[end] = input_copy[end], input_copy[start]
+    #     if end < input_length and operator(input_array[start], input_array[end]):
+    #         input_array[start], input_array[end] = input_array[end], input_array[start]
+    # merge_length = 2
 
-    merge_length = 1
     while merge_length < input_length:
         for l in range(0, input_length, merge_length*2):
             r = min(l + merge_length, input_length)
@@ -47,15 +48,14 @@ def merge_sort_not_recursion(input_array, reverse=False):
             r_last = min(r + merge_length, input_length)
 
             for k in range(l, r_last):
-                if r == r_last or l != l_last and not operator(input_copy[l], input_copy[r]):
-                    input_array[k] = input_copy[l]
+                if r == r_last or l != l_last and not operator(input_array[l], input_array[r]):
+                    input_copy[k] = input_array[l]
                     l += 1
                 else:
-                    input_array[k] = input_copy[r]
+                    input_copy[k] = input_array[r]
                     r += 1
 
         merge_length *= 2
-        if merge_length < input_length:
-            input_array, input_copy = input_copy, input_array
+        input_array, input_copy = input_copy, input_array
 
     return input_array
