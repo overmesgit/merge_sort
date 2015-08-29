@@ -1,7 +1,7 @@
 from timeit import timeit
 from unittest.case import TestCase
-from bubble import bubble_sort
-from merge import merge_sort, merge_sort_not_recursion
+from python.bubble import bubble_sort
+from python.merge import merge_sort, merge_sort_not_recursion
 from random import sample
 
 
@@ -30,9 +30,9 @@ class SortTest(TestCase):
             self.assertEqual(sorted(test_case, reverse=True), merge_sort_not_recursion(test_case, reverse=True))
 
     def test_time(self):
-        n = 500
+        n = 5000
         test_input = sample(range(n), n)
         test_functions = (bubble_sort, merge_sort, merge_sort_not_recursion)
         for func in test_functions:
-            runing_time = timeit(lambda: func(test_input.copy()), number=10)
-            print('{}: {}'.format(func.__name__, runing_time))
+            running_time = timeit(lambda: func(test_input.copy()), number=1)
+            print('{}: {}'.format(func.__name__, running_time))
