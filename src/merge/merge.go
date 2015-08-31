@@ -1,23 +1,6 @@
-package main
-import (
-	"fmt"
-	"time"
-	"math/rand"
-	"math"
-)
+package merge
 
-func main() {
-	rand.Seed(int64(time.Now().UnixNano()))
-	var input []int = rand.Perm(5000)
-	start := time.Now().UnixNano()
-	fmt.Println(merge(input))
-	end := time.Now().UnixNano()
-
-	fmt.Println(float64(end - start)/math.Pow(10, 9))
-
-}
-
-func merge(input_array []int) []int {
+func Merge(input_array []int) []int {
 
 	input_length := len(input_array)
 	if input_length > 1 {
@@ -29,8 +12,8 @@ func merge(input_array []int) []int {
 		copy(left_array, input_array[:split_length])
 		copy(right_array, input_array[split_length:])
 
-		merge(left_array)
-		merge(right_array)
+		Merge(left_array)
+		Merge(right_array)
 
 		l, r := 0, 0
 		for i := range input_array {

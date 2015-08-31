@@ -1,4 +1,4 @@
-package main
+package merge
 
 import (
 	"testing"
@@ -16,7 +16,7 @@ func TestSort(t *testing.T) {
 	for i := 0; i < 100; i++ {
 		rand.Seed(int64(time.Now().UnixNano()))
 		var input []int = rand.Perm(100)
-		result := merge(input)
+		result := Merge(input)
 		sort.Sort(intArray(input))
 		for i, v := range input {
 			if v != result[i] {
@@ -26,4 +26,11 @@ func TestSort(t *testing.T) {
 		}
 	}
 
+}
+
+var result []int
+func BenchmarkMergeSort(b *testing.B) {
+	var input []int = rand.Perm(50000)
+	b.ResetTimer()
+	result = Merge(input)
 }
