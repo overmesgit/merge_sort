@@ -16,7 +16,7 @@ func main() {
         input[i], _ = strconv.Atoi(str_num)
     }
 
-    fmt.Println("Result123: ")
+    fmt.Println("Result: ")
 }
 
 func InversionsCounter(input []int) int {
