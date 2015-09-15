@@ -36,9 +36,9 @@ class SortTest(TestCase):
             self.assertEqual(sorted(test_case, reverse=True), merge_sort_not_recursion(test_case, reverse=True))
 
     def test_time(self):
-        n = 5000
+        n = 50000
         test_input = sample(range(n), n)
-        test_functions = (bubble_sort, merge_sort, merge_sort_not_recursion, quick_sort)
+        test_functions = (merge_sort, merge_sort_not_recursion, quick_sort)
         for func in test_functions:
             running_time = timeit(lambda: func(test_input.copy()), number=1)
             print('{}: {}'.format(func.__name__, running_time))
