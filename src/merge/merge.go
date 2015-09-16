@@ -1,6 +1,6 @@
 package merge
 
-func Merge(input_array []int) []int {
+func Merge(input_array []int, opt ...int) []int {
 
 	input_length := len(input_array)
 	if input_length > 1 {
